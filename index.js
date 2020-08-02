@@ -103,9 +103,9 @@ function updateSeekTooltip(event) {
 // skipAhead jumps to a different point in the video when the progress bar
 // is clicked
 function skipAhead(event) {
-  const skipTo = event.target.dataset.seek
-    ? event.target.dataset.seek
-    : event.target.value;
+  const skipTo = event.target.dataset.seek ?
+    event.target.dataset.seek :
+    event.target.value;
   video.currentTime = skipTo;
   progressBar.value = skipTo;
   seek.value = skipTo;
@@ -157,18 +157,17 @@ function toggleMute() {
 // animatePlayback displays an animation when
 // the video is played or paused
 function animatePlayback() {
-    playbackAnimation.animate([
-      {
-        opacity: 1,
-        transform: "scale(1)",
-      },
-      {
-        opacity: 0,
-        transform: "scale(1.3)",
-      }
-    ], {
-      duration: 500,
-    });
+  playbackAnimation.animate([{
+      opacity: 1,
+      transform: "translate(-50%, -50%) scale(1)",
+    },
+    {
+      opacity: 0,
+      transform: "translate(-50%, -50%) scale(1.3)",
+    }
+  ], {
+    duration: 500,
+  });
 }
 
 // toggleFullScreen toggles the full screen state of the video
@@ -228,8 +227,10 @@ function showControls() {
 // keyboardShortcuts executes the relevant functions for
 // each supported shortcut key
 function keyboardShortcuts(event) {
-  const { key } = event;
-  switch(key) {
+  const {
+    key
+  } = event;
+  switch (key) {
     case 'k':
       togglePlay();
       animatePlayback();
